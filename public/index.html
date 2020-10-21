@@ -1,17 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="title-container">
+        <div class="title-container-space">
+            <div class="title">
+            The emoji piano
+            </div>       
+        </div>  
+    </div>
+
+    <div class='img'>
+        <img src="http://vgeHSzH0jWrdcES2hcys8SSz3boSOrwK.giphy.com/v1/gifs/emoji">
+    </div>
+
+    <div class="piano-container">
+        <div class="piano-keys-container">
+            <div class="piano-keys"></div>
+                <ul>
+                    <li class="key-white-1"></li>
+                    <li class="key-white-2"></li>
+                    <li class="key-white-3"></li>
+                    <li class="key-white-4"></li>
+                    <li class="key-white-5"></li>
+                    <li class="key-white-6"></li>
+                    <li class="key-white-7"></li>
+                    <li class="key-black-1"></li>
+                    <li class="key-black-2"></li>
+                    <li class="key-black-3"></li>
+                    <li class="key-black-4"></li>
+                    <li class="key-black-5"></li>
+                </ul>
+            </div> 
+        
+        <div class="piano-notes-container">
+                <ul>
+                    <li class="do-note">DO</li>
+                    <li class="re-note">RÉ</li>
+                    <li class="mi-note">MI</li>
+                    <li class="fa-note">FA</li>
+                    <li class="sol-note">SOL</li>
+                    <li class="la-note">LA</li>
+                    <li class="si-note">SI</li>
+                </ul>
+        </div>     
+</div>        
+    
+      
+</body>
 </html>
