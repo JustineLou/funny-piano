@@ -27,7 +27,7 @@ export default {
     height: 100vh; 
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 </style>
