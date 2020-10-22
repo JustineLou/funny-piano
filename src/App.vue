@@ -21,11 +21,13 @@ export default {
 </script>
 
 <style lang="postcss"  scoped>
-  .principal-container{
+.principal-container{
     background: linear-gradient(rgba(255, 157, 108, 1), rgba(187, 78, 117, 1));
     background-size: 100%;
-    position: relative;
-    width: 1440px;
-    height: 768px;
+    height: 100vh; 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 </style>
