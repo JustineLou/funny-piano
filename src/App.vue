@@ -17,6 +17,7 @@ export default {
     VEmoji,
     VPiano,
   },
+
 };
 </script>
 
@@ -27,7 +28,9 @@ export default {
     height: 100vh; 
     width: 100%;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    border: solid 2px red;
+
 }
 </style>
