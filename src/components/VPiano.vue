@@ -3,9 +3,9 @@
 
     <div>
         <div class="piano-container" id="note.name">
-            <div class="key-white" v-for='note in whiteNotes' :key='note.name' @click="onClick(note)" :keycode="note.keyCode" @keydown="onKeyDown()" @keyup="onKeyUp()" id="note.name"></div>
+            <div class="key-white" v-for='note in whiteNotes' :key='note.name' @mousedown="onMouseDown(note)" @mouseup="onMouseUp(note)" :keycode="note.keyCode" @keydown="onKeyDown()" @keyup="onKeyUp()" id="note.name"></div>
             <div class="key-black-container">
-                <div class="key-black" v-for='note in blackNotes' :key='note.name' @click="onClick(note)"  :keycode="note.keyCode" @keydown="onKeyDown()" @keyup="onKeyUp()" id="note.name"></div> 
+                <div class="key-black" v-for='note in blackNotes' :key='note.name' @mousedown="onMouseDown(note)" @mouseup="onMouseUp(note)"  :keycode="note.keyCode" @keydown="onKeyDown()" @keyup="onKeyUp()" id="note.name"></div> 
             </div>
         </div>
 
@@ -100,13 +100,17 @@ export default {
     methods: {
         //En appuyant sur la souris, le son associée à la note est lancé, un émoji aléatoire apparait
        
-        onClick(note) {
+        onMouseDown(note) {
             const noteName = encodeURIComponent(note.sound);
             this.audio.src = `/assets/sounds/${noteName}.mp3`;
             this.audio.play();
             this.componentEmoji.generateEmoji(); 
+            this.colorNote();
         },
-
+        //En lachant le clik de la souris, l'émoji disparait
+        onMouseUp() {
+            this.componentEmoji.stopEmoji();            
+        },   
         addListeners() {
             document.addEventListener('keydown', this.onKeyDown)
             document.addEventListener('keyup', this.onKeyUp)

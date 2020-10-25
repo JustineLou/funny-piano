@@ -13,7 +13,7 @@ export default {
       src: null
     }
   },
-  methods: {
+    methods: {
       //Générer et faire apparaitre un emoji dans l'image
       async generateEmoji(){
       const gf = new GiphyFetch("hoc7Xw81iwUP2iewXhekupQznVmYDlHK");
