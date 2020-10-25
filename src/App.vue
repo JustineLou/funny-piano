@@ -25,12 +25,11 @@ export default {
 .principal-container{
     background: linear-gradient(rgba(255, 157, 108, 1), rgba(187, 78, 117, 1));
     background-size: 100%;
-    padding-bottom: 5%;
-     width: 100%;
+    padding-bottom: 15%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: solid 2px red;
     height: 100%;
 
 }

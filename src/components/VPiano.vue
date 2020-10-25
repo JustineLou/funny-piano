@@ -1,21 +1,22 @@
  <template>
 <!--Afficher le piano et ses touches du clavier-->
 
-
+    <div>
         <div class="piano-container" id="note.name">
-            <div class="key-white" v-for='note in whiteNotes' :key='note.name' @mousedown="onMouseDown(note)" v-on:mouseup="onMouseUp(note)" id="note.name" v-on:keydown="onKeyPress(e)" ></div>
+            <div class="key-white" v-for='note in whiteNotes' :key='note.name' @mousedown="onMouseDown(note)" @mouseup="onMouseUp(note)" :keycode="note.keyCode" @keydown="onKeyDown()" @keyup="onKeyUp()" id="note.name"></div>
             <div class="key-black-container">
-                <div class="key-black" v-for='note in blackNotes' :key='note.name' @mousedown="onMouseDown(note)" v-on:mouseup="onMouseUp(note)" id="note.name"></div> 
-            </div>
-
- <!-- Afficher les notes du piano-->
-            <div class="notes-container">
-                <div class="notes" v-for="note in whiteNotes" :key="note.name"  >
-                        <p>{{ note.name }}</p>
-                </div>
+                <div class="key-black" v-for='note in blackNotes' :key='note.name' @mousedown="onMouseDown(note)" @mouseup="onMouseUp(note)" :keycode="note.keyCode" @keydown="onKeyDown()" @keyup="onKeyUp()" id="note.name"></div> 
             </div>
         </div>
-      
+
+ <!-- Afficher les notes du piano-->
+        <div class="notes-container">
+            <div class="notes" v-for="note in whiteNotes" :key="note.name"  >
+                    <p>{{ note.name }}</p>
+            </div>
+        </div>
+    </div>
+     
   
 </template>
 
@@ -28,73 +29,72 @@ export default {
                 {
                     name: 'DO',
                     sound: 'C',
-                    keycode: '81'
+                    keyCode: 81
                 },                                         
                 {                                
                     name: 'RE',
                     sound: 'D',
-                    keycode: '83'
+                    keyCode: 83
                 },
                 {
                     name: 'MI',
                     sound: 'E',
-                    keycode: '68'
+                    keyCode: 68
                 },
                 {
                     name: 'FA',
                     sound: 'F',
-                    keycode: '70'
+                    keyCode: 70
                 },
                 {                                
                     name: 'SOL',
                     sound: 'G',
-                    keycode: '71'
+                    keyCode: 71
                 },                               
                 {
                     name: 'LA',
                     sound: 'A',
-                    keycode: '72'
+                    keyCode: 72
                 },
                 {
                     name: 'SI',
                     sound: 'B',
-                    keycode: '74'
+                    keyCode: 74
                 },
             ],
             blackNotes: [
                 {                               
                     name: 'do#',
                     sound: 'C#',
-                    keycode: '90'
+                    keyCode: 90
                 },
                 {
                     name: 're#',
                     sound: 'D#',
-                    keycode: '69'
+                    keyCode: 69
                 },
                 {
                     name: 'fa#',
                     sound: 'F#',
-                    keycode: '84'
+                    keyCode: 84
                 },      
                 {
                     name: 'sol#',
                     sound: 'G#',
-                    keycode: '89'
+                    keyCode: 89
                 },  
                 {                                
                     name: 'la#',
                     sound: 'A#',
-                    keycode: '85'
+                    keyCode: 85
                 }
             ]
         }   
     },
      mounted(){
         this.audio = document.createElement('audio');
-        this.isPress = false;
-        this.componentEmoji = this.$parent.$children[1];
-        
+        this.componentEmoji = this.$parent.$children[1];     
+        this.addListeners()
     },
     
     methods: {
@@ -105,13 +105,24 @@ export default {
             this.audio.src = `/assets/sounds/${noteName}.mp3`;
             this.audio.play();
             this.componentEmoji.generateEmoji(); 
-            this.colorNote();
         },
         //En lachant le clik de la souris, l'émoji disparait
         onMouseUp() {
             this.componentEmoji.stopEmoji();            
-        },   
-    }  
+        },
+
+        addListeners() {
+            document.addEventListener('keydown', this.onKeyDown)
+            document.addEventListener('keyup', this.onKeyUp)
+        },
+
+        onKeyDown(e){
+            console.log(e.keyCode);
+        },
+
+        onKeyUp(){
+        }
+    }
 }
 </script>
 
@@ -223,44 +234,15 @@ export default {
     display: flex;
     margin-bottom: 24px;
     height: 22px;
-    width: 462px;
-    position: absolute;
-    left: 34px;
-    top: 324px;
-    color:black;
-    font-family: 'PT Mono', monospace;
+    width: 100%;
+    margin-top: 50px;
+    color: white;
+    opacity: 0.4;
+    font-family: "PT Mono", monospace;
     font-size: 20px;
     line-height: 22px;
-    justify-content: space-between;
+    justify-content: space-around;
     }
-
-
-.notes-container:nth-child(1){
-    left: 34px;
-}
-
-.notes-container:nth-child(2){
-    left: 106px;
-    }
-
-.notes-container:nth-child(3){
-    left: 180px;
-}
-.notes-container:nth-child(4){
-    left: 254px;
-}
-.notes-container:nth-child(5){
-    left: 321px;
-}
-
-.notes-container:nth-child(6){
-    left: 400px;
-}
-.notes-container:nth-child(7){
-    left: 472px;
-}
-
-
 
 @media only screen and (max-width: 767px) {
     .piano-container {
